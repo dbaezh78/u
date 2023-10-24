@@ -1,1 +1,16 @@
-hola mundo
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acortador de URL</title>
+</head>
+<body>
+  <h1>Acortador de URL</h1>
+  <form action="shorten.php" method="post">
+    <input type="text" name="long_url" placeholder="Introduce la URL">
+    <input type="submit" value="Acortar">
+  </form>
+  <p>El enlace acortado se mostrará aquí:</p>
+  <p id="short_url"></p>
+</body>
+</html>

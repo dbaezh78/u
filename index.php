@@ -1,17 +1,14 @@
 <?php
 
-// Recibir la URL original del usuario
-$url_original = $_POST["url"];
+// Validar la URL
+if (!filter_var($_POST['long_url'], FILTER_VALIDATE_URL)) {
+  die("La URL no es válida.");
+}
 
-// Generar una URL acortada
-$url_acortada = substr(md5($url_original), 0, 6);
+// Generar un enlace acortado
+$short_url = substr(md5($_POST['long_url']), 0, 8);
 
-// Almacenar la URL original y la URL acortada en la base de datos
-$db = new PDO("mysql:host=localhost;dbname=acortador_de_url", "root", "");
-$query = $db->prepare("INSERT INTO urls (url_original, url_acortada) VALUES (?, ?)");
-$query->execute(array($url_original, $url_acortada));
+// Devolver el enlace acortado
+echo $short_url;
 
-// Redirigir al usuario a la URL original
-header("Location: $url_original");
-
-?>  
+?>
